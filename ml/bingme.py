@@ -28,14 +28,14 @@ def bingMe(query,callnum,count=35):
 	#print(json.dumps(data))
 
 	#writing to file, this erases the file if it already existed
-	fin = open('{0}-{1}.json'.format(callnum,query),'w+')
+	fin = open('data/{0}-{1}.json'.format(callnum,query),'w+')
 	fin.close()
 
-	fin = open('{0}-{1}.json'.format(callnum,query),'w+')
+	fin = open('data/{0}-{1}.json'.format(callnum,query),'w+')
 	fin.write(response)
 	end = time.time()
 	fin.close()
-	print('Completed in {0}.'.format(end-start))
+	print('Completed in {0}s.'.format(end-start))
 
 
 
