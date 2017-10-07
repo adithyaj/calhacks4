@@ -12,11 +12,11 @@ Output: JSON file (to be the image)
 
 
 """
-def bingMe(query,callnum):
+def bingMe(query,callnum,count=35):
 	start = time.time()
 	k,v = scrt.getMSFTKey()
 
-	args = urllib.parse.urlencode({'q': query.replace(' ','+'), k: v, 'mkt': 'en-us'})
+	args = urllib.parse.urlencode({'q': query.replace(' ','+'), k: v, 'mkt': 'en-us','count':count,'size':'large'})
 
 	#backup
 	#submission = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search?q={0}&{1}={2}&mkt=en-us'.format(query,k,v)
@@ -36,3 +36,7 @@ def bingMe(query,callnum):
 	end = time.time()
 	fin.close()
 	print('Completed in {0}.'.format(end-start))
+
+
+
+##need to get from JSON to image on GOOGLE then get name also
