@@ -159,8 +159,8 @@
 	<div class="container">
 		<h2>Welcome</h2>
 		<form class="form" action="{{ url_for('index') }}" method="Post">
-			<div placeholder="Username" id = "input"> {{ form.username.label }}: {{ form.username() }}</div>
-			<div placeholder="Password" id = "input">  {{ form.password.label }}: {{ form.password() }}</div>
+			<div> {{ form.username.label }}: {{ form.username() }}</div>
+			<div>  {{ form.password.label }}: {{ form.password() }}</div>
 			
  			<button style = "color: black;" type="submit" id="login-button" >Login</button>
 		</form>

@@ -30,8 +30,16 @@
 
     img {
       height : 75px;
-      width : 200px;
+      width : 175px;
     }
+
+    h2 { 
+     position: absolute; 
+     top: 0px; 
+     left: 0; 
+     width: 100%; 
+     color : #57BC90;
+  }
 
     .img-shadow-1
     {
@@ -72,6 +80,18 @@
 
 
 </style>
+
+<script>
+function map(){
+  window.location.href = "map.html";
+}
+
+
+
+
+</script>
+
+
 </head>
 <body> 
 
@@ -100,9 +120,14 @@
 
 
 <div class="well text-center">
+  <div class = "row">
   <div class="col-sm-5"></div>
-  <div class="col-sm-2 img-shadow-1"><img src="../static/img/white.jpg"  /></div>
+  <div class="col-sm-2 img-shadow-1">
+    <img src="../static/img/white.jpg" onclick = "map();"/>
+    <h2>New York</h2>
+  </div>
   <div class="col-sm-5"></div>
+</div>
 
 </div>
 
