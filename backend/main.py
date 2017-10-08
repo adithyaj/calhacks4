@@ -7,7 +7,7 @@ import os
 import json
 import sqlite3
 
-keys = load_keys()
+#keys = load_keys()
 app = Flask(__name__) # create the application instance
 app.config['SECRET_KEY'] = "bobjeff" #keys['wtf_secret_key']
 print(app.config['SECRET_KEY'])

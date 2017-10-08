@@ -22,8 +22,6 @@
 	    margin-bottom: 100px;
     }
 
-   
-
     @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 
 	@prim: #53e3a6;
@@ -37,12 +35,12 @@
 	}
 
 	body{
-		color: white;
+		color: black;
 		font-weight: 300;
 		
 		::-webkit-input-placeholder { /* WebKit browsers */
 			font-family: 'Source Sans Pro', sans-serif;
-				color:    white;
+				color:    black;
 			font-weight: 300;
 		}
 		
@@ -161,10 +159,9 @@
 		<form class="form" action="{{ url_for('index') }}" method="Post">
 			<div> {{ form.username.label }}: {{ form.username() }}</div>
 			<div>  {{ form.password.label }}: {{ form.password() }}</div>
-			
  			<button style = "color: black;" type="submit" id="login-button" >Login</button>
 		</form>
-		<a href= "home.html"><p style = "text-decoration: underline; color: white;"> Continue as Guest </p>  </a>
+		<a href= "create_user"><p style = "text-decoration: underline; color: white;"> Continue as Guest </p>  </a>
 	</div>
 	
 </div>
