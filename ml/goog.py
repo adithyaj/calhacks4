@@ -20,4 +20,4 @@ def ML(picname,filename):
     labels = response.label_annotations
     faces = response.face_annotations
     web_entities = response.web_detection.web_entities
-    print(labels[0])
+    print(labels['score'])
