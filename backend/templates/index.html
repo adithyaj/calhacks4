@@ -91,7 +91,7 @@
 		
 	}
 
-	#input{
+	input{
 			display: block;
 			appearance: none;
 			outline: 0;
@@ -155,11 +155,11 @@
 
 <div class="wrapper">
 	<div class="container">
-		<h2>Welcome</h2>
+		<h2 style = "color: white;">Welcome</h2>
 		<form class="form" action="{{ url_for('index') }}" method="Post">
-			<div> {{ form.username.label }}: {{ form.username() }}</div>
-			<div>  {{ form.password.label }}: {{ form.password() }}</div>
- 			<button style = "color: black;" type="submit" id="login-button" >Login</button>
+			<div style = "color:white;"> {{ form.username.label }}: <br> {{ form.username() }}</div>
+			<div style = "color:white;">  {{ form.password.label }}:<br> {{ form.password() }}</div>
+ 			<button style = "color: #015249;" type="submit" id="login-button" >Login</button>
 		</form>
 		<a href= "create_user"><p style = "text-decoration: underline; color: white;"> Continue as Guest </p>  </a>
 	</div>

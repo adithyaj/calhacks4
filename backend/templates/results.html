@@ -25,20 +25,22 @@
     } 
 
     .well {
-      height: 500px;
+      height: 1000px;
     }
 
     img {
-      height : 75px;
-      width : 175px;
+      height : 120px;
+      width : 100%;
     }
 
     h2 { 
      position: absolute; 
      top: 0px; 
-     left: 0; 
-     width: 100%; 
+     padding-left: 60px; 
+    
+     width: 75%; 
      color : #57BC90;
+    text-align: center;
   }
 
     .img-shadow-1
@@ -77,30 +79,12 @@
     -ms-transition:all .6s ease-in-out;
     -o-transition:all .6s ease-in-out;
     }
-
+      
+      .top-buffer {
+          margin-top:30px;
+      }
 
 </style>
-
-<script>
-function sendLOC(x) {
-        $.ajax({
-            url: '/get_Coordinates/' + x,
-            type: 'GET',
-            success: function(response) {
-                response = $.parseJSON(response);
-                var coords = [response['latitude'], response['longitude']]
-                createMap(coords);
-                return;
-                }
-            }
-        });
-    } 
-
-
-
-</script>
-
-
 </head>
 <body> 
 
@@ -123,57 +107,28 @@ function sendLOC(x) {
 <div style = "margin-top: 20px; height: 150px; background-color: #FFFFFF; margin-bottom: 0px;" class="jumbotron text">
   <div class="container text-center">
     <h1 style = "color: #015249; font-size: 2em; margin-top: 30px;" >Results:</h1> 
-    </span>
   </div>
 </div>
 
 
 <div class="well text-center">
   <ul>
-    {% for n in results_list%}
+    {% for result in results_list %}
+      <div class = "row top-buffer">
       <div class = "row">
-        <div class="col-sm-5"></div>
-        <div class="col-sm-2 img-shadow-1">
-          <a id = "location" onclick="javascript:sendLOC(n)">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 img-shadow-1 text-center">
+          <a id="location" href = "map/{{result[0]}}">
             <img src="../static/img/white.jpg" />
-            <h2>{{results_list[n]}}</h2>
+            <h2>{{result[1]}}</h2>
           </a>
         </div>
-        <div class="col-sm-5"></div>
+        <div class="col-sm-4"></div>
+      </div>
       </div>
     {% endfor %}
   </ul>
 </div>
-
-<div style="position: relative">
-    <div id="map" style="height: 100%"></div>
-    <script>
-      function createMap(coords){
-        var map = L.Wrld.map("map", "4f71b74225291176f474d5578846c978", {
-          center: coords,
-          zoom: 16
-        });
-
-        setTimeout(function() {
-          map.setView(coords, 18, {
-            headingDegrees: 270,
-            animate: true,
-            durationSeconds:5
-          });
-        }, 5000);
-      }
-    </script>
-  </div>
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

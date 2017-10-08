@@ -128,8 +128,8 @@ def select():
     return render_template('select.html')
 
 
-@app.route('/next2/<direction>', methods=['GET'])
-def next2(direction):
+@app.route('/next/<direction>', methods=['GET'])
+def next(direction):
     d = {}
     if(session['count'] == hard_limit):
         d['first'] = -1
@@ -140,8 +140,8 @@ def next2(direction):
     session['count'] += 1
     return json.dumps(d)
 
-@app.route('/next/<direction>', methods=['GET'])
-def next(direction):
+@app.route('/next2/<direction>', methods=['GET'])
+def next2(direction):
     d={}
     if(session['count'] == hard_limit):
         d['first'] = -1
@@ -161,13 +161,19 @@ def load(item):
 def results():
     db = get_db()
     temp = db.execute('SELECT id, place, latitude, longitude FROM results LIMIT 5')
-    cur = temp.fetchone()
+    cur = temp.fetchall()
+    ls = [tuple(x) for x in cur]
     return render_template('results.html', results_list=cur)
 
 
-@app.route('/about')
-def about():
-    return '<h1>FAIL<h1>'
+@app.route('/map/<id>')
+def about(id):
+    db = get_db()
+    temp = db.execute('SELECT latitude, longitude FROM results WHERE id=?', (id,))
+    cur = [tuple(x) for x in temp.fetchall()]
+    cur = cur[0]
+    print(cur)
+    return render_template('map.html', **{"lat":cur[0], "lon":cur[1]})
 
 
 if __name__ == '__main__':
