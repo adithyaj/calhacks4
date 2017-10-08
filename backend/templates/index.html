@@ -70,6 +70,47 @@
   
 
   </style>
+
+  <script>  
+  
+    function print_arrow_key(keyCodeNumber) {
+    // console.log(keyCodeNumber);
+    var key_arrow_or_other = document.getElementById('key_arrow_or_other'),
+        LEFT = 37,
+        UP = 38,
+        RIGHT = 39,
+        DOWN = 40;
+
+    switch (keyCodeNumber) {
+    case LEFT:
+        var elem = document.getElementById("nextPage");
+        window.location.href = "index.html";
+        break;
+    case RIGHT:
+        var elem = document.getElementById("nextPage");  
+        window.location.href="index.html";
+        break;
+    default:
+        key_arrow_or_other.innerHTML = 'Other character (not an arrow key)';
+        break;
+    }
+
+  }
+
+  function checkKeycode(event) {
+      // handling Internet Explorer stupidity with window.event
+      // @see http://stackoverflow.com/a/3985882/517705
+      var keyDownEvent = event || window.event,
+      keycode = (keyDownEvent.which)? keyDownEvent.which: keyDownEvent.keycode;
+
+      print_arrow_key(keycode);
+
+      return false;
+    }
+    document.onkeydown = checkKeycode;
+
+
+  </script>
 </head>
 <body>
 
@@ -101,8 +142,8 @@
   <div class="row">
   
     <div class="col-sm-2"></div>
-    <div class="col-sm-4 img-shadow-1"><img src="nature.jpg"  /></div>
-    <div class="col-sm-4 img-shadow-1"><img src="city.jpg" /></div>
+    <div class="col-sm-4 img-shadow-1"><img src="../static/test/nature.jpg"  /></div>
+    <div class="col-sm-4 img-shadow-1"><img src="../static/test/city.jpg" /></div>
     <div class="col-sm-2"></div>
   </div>
 </div>

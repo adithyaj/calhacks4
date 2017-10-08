@@ -165,9 +165,10 @@
 	<div class="container">
 		<h2>Welcome</h2>
 		
-		<form class="form" action="pref.html">
-			<input type="text" placeholder="Username">
-			<input type="password" placeholder="Password">
+		<form class="form" action="{{ url_for('login') }}" method="Post">
+			
+			<div> <input type="text" placeholder="Username"> {{ form.username.label }}: {{ form.username() }}</div>
+			<div> <input type="password" placeholder="Password"> {{ form.password.label }}: {{ form.password() }}</div>
 			<button style = "color: black;" type="submit" id="login-button" >Login</button>
 		</form>
 
