@@ -24,6 +24,18 @@ def ML(filename,prevlabel=None):
     #faces = response.face_annotations
     #web_entities = response.web_detection.web_entities
     
+    c = 0
+    ans = []
+    for label in labels:
+        if c >=10:
+            break
+        else:
+            ans.append(label.description)
+            c+=1
+    return ans
+
+
+    """
     if labels[0] == prevlabel:
         return labels[1].description
-    return labels[0].description
+    return labels[0].description"""

@@ -80,7 +80,7 @@ def imageUpload(query,callnum):
     # Make the blob publicly viewable.
     blob.make_public()
     image_public_url = blob.public_url
-    print('File {} uploaded to {}.'.format(
+    print('Image {0}: {1} uploaded to {2}.'.format(callnum,
         source_file_name,
         destination_blob_name))
 
@@ -106,12 +106,3 @@ def sendVals(lst):
 
 def get_answer():
     return 1 ##shivam writes this
-
-    
-
-
-
-
-
-
-##need to get from JSON to image on GOOGLE then get name also

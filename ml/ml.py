@@ -3,11 +3,17 @@ from bingme import imageURL
 from bingme import *
 
 
+
+
+guiDict = {}
+count = 0
+MAX_CYCLE = 5
 def ml_main():
-    count = 0
+    global count
+    global guiDict
     query1 = 'landscape'
     query2 = 'city'
-    while (count < 10):
+    while (count < MAX_CYCLE):
         reply1,q1,c1=bingMe(query1,count)
         reply2,q2,c2=bingMe(query2,count)
         opt1 = imageURL(reply1)
@@ -18,17 +24,19 @@ def ml_main():
         ans2 = imageUpload(q2,c2)
 
         ##give shivam and yara the urls
-        #left = paratu(ans1)
-        #right = paratu(ans2)
+        left = paratu(ans1)
+        ml_left = ML(ans1)
+        right = paratu(ans2)
+        ml_right = ML(ans2)
         ### end names
-        #gui_list=[left,right]
-
+        guiDict = {'first' : (left,ml_left), 'second': (right,ml_right)}
+        #print(guiDict,'\n')
         if get_answer() == 0:
-            query2 = ML(ans1)
-            print(query2)
+            query2 = ml_left[0]
+            print(query2,'\n')
         else:
-            query1 = ML(ans2)
-            print(query1)
+            query1 = ml_right[0]
+            print(query1,'\n')
         count+=1 
 
 
