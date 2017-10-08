@@ -1,0 +1,58 @@
+San Francisco, California, USA-[metropolitan,city,skyline,buildings,skyscraper]
+New York, New York, USA-[metropolitan,city,skyline,buildings,skyscraper,money]
+Los Angeles, California, USA-[metropolitan,city,skyline,buildings,skyscraper,entertainment]
+Seattle, Washington, USA-[metropolitan,city,skyline,buildings,skyscraper,entertainment]
+Chicago, Illinois, USA-[metropolitan,city,skyline,buildings,skyscraper,lake]
+Paris, , France-[metropolitan,city,tower,old,french]
+London, , United Kingdom-[metropolitan,city,tower,old,english]
+Barcelona, , Spain-[metropolitan,city,tower,old,art]
+Santorini, , Greece-[metropolitan,city,tower,old,art,history]
+Singapore, , Singapore-[metropolitan,city,tower,new,art,island]
+Cape Town, , South Africa-[developed,africa,city,old,art,museum]
+Yosemite National Park, California, USA-[nature,outdoors,park,trees,mountains,granite,water,waterfall,snow]
+Zion National Park, Utah, USA-[nature,outdoors,park,waterfall,hike,bush,plants]
+Rio de Janeiro, , Brazil
+Angra dos Reis, , Brazil
+Belfast, , Ireland
+Heidelberg, , Germany
+New Delhi, , India
+Helsinki, , Finland
+Honolulu, Hawaii, USA
+Jerusalem, , Israel
+La Paz, , Bolivia
+Montevideo, , Uruguay
+Montreal, Quebec, Canada
+Sydney, , Australia
+Okavango Delta, , Botswana
+Oslo, , Norway
+Santo Domingo, , Dominican Republic
+Rome, , Italy
+Puerto Vallarta, , Mexico
+Yellowstone National Park, , USA
+Grand Canyon National Park, , USA
+Arches National Park, Utah, USA
+Rocky Mountain National Park, , USA
+Denali National Park and Preserve, Alaska, USA
+Kenai Fjords National Park, Alaska, USA
+Shanghai, , China
+Beijing, , China
+Tokyo, , Japan
+Osaka, , Japan
+Bangkok, , Thailand
+Mumbai, , India
+Jaipur, , India
+Goa, , India
+Machu Picchu, , Peru
+Lima, , Peru
+Cairo, , Egypt
+Tenerife, , Spain
+Marrakesh, , Morocco
+Big Bend National Park, Texas, USA
+Bryce Canyon National Park, Utah, USA
+Canyonlands National Park, Utah, USA
+Crater Lake, Oregon, USA
+Joshua Tree National Park, California, USA
+Pinnacles National Park, California, USA
+Sequoia National Park, California, USA
+Atlanta, Georgia, USA
+Chennai, , India
