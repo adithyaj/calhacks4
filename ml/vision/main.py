@@ -1,7 +1,6 @@
 import base64
 import os
 import json
-from google.protobuf.json_format import MessageToJson
 
 from flask import Flask, redirect, render_template, request
 from google.cloud import datastore
