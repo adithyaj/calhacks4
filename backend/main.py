@@ -7,6 +7,7 @@ from geopy.geocoders import Nominatim
 import os
 import json
 import sqlite3
+from ml import ml_main
 
 #keys = load_keys()
 app = Flask(__name__) # create the application instance
@@ -127,8 +128,8 @@ def select():
     return render_template('select.html')
 
 
-@app.route('/next/<direction>', methods=['GET'])
-def next(direction):
+@app.route('/next2/<direction>', methods=['GET'])
+def next2(direction):
     d = {}
     if(session['count'] == hard_limit):
         d['first'] = -1
@@ -139,13 +140,29 @@ def next(direction):
     session['count'] += 1
     return json.dumps(d)
 
+@app.route('/next/<direction>', methods=['GET'])
+def next(direction):
+    d={}
+    if(session['count'] == hard_limit):
+        d['first'] = -1
+        return json.dumps(d)
+    blob = ml_main()
+    d['first'] = blob['first'][0]
+    d['second'] = blob['second'][0]
+    session['count'] += 1
+    session['history'].append(direction)
+    return json.dumps(d)
+
 @app.route('/load/<item>')
 def load(item):
     return build_results('../places.txt')
 
 @app.route('/results')
 def results():
-    return render_template('results.html')
+    db = get_db()
+    temp = db.execute('SELECT id, place, latitude, longitude FROM results LIMIT 5')
+    cur = temp.fetchone()
+    return render_template('results.html', results_list=cur)
 
 
 @app.route('/about')

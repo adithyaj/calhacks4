@@ -38,6 +38,7 @@ def ml_main(param=None):
     ml_right = ML(ans2)
     ### end names
     guiDict = {'first' : (left,ml_left), 'second': (right,ml_right)}
+    return guiDict    
         #print(guiDict,'\n')
 
     """

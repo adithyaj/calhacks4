@@ -35,7 +35,8 @@ def bingMe(query,callnum,count=35):
     
 def imageURL(jsonData, num=5):
     urlList = []
-    d = json.loads(jsonData);
+    print(jsonData)
+    d = json.loads(jsonData)
     numImg = num
     imgList = d["value"]
     if numImg > len(imgList):
