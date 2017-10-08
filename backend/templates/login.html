@@ -96,7 +96,7 @@
 		
 	}
 
-	input{
+	#input{
 			display: block;
 			appearance: none;
 			outline: 0;
@@ -167,8 +167,8 @@
 		
 		<form class="form" action="{{ url_for('login') }}" method="Post">
 <!-- 			<input type="text" placeholder="Username"> 
- -->			<div> {{ form.username.label }}: {{ form.username() }}</div>
-			<div>  {{ form.password.label }}: {{ form.password() }}</div>
+ -->		<div placeholder="Username" id = "input"> {{ form.username.label }}: {{ form.username() }}</div>
+			<div placeholder="Password" id = "input">  {{ form.password.label }}: {{ form.password() }}</div>
 <!-- 			<input type="password" placeholder="Password">
  -->			<button style = "color: black;" type="submit" id="login-button" >Login</button>
 		</form>
