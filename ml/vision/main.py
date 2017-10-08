@@ -41,7 +41,6 @@ def upload_photo():
 
     # Make the blob publicly viewable.
     blob.make_public()
-    print(blob.name)
     image_public_url = blob.public_url
     
     # Create a Cloud Vision client.
@@ -56,7 +55,6 @@ def upload_photo():
     labels = response.label_annotations
     faces = response.face_annotations
     web_entities = response.web_detection.web_entities
-    print(labels[0])
 
 
     # Create a Cloud Datastore client

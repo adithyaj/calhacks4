@@ -8,7 +8,10 @@ from google.cloud import storage
 from google.cloud import vision
 
 
-def ML(picname,filename):
+
+##takes in the file name
+
+def ML(filename,prevlabel=None):
 
     storage_client = storage.Client()
     bucket = storage_client.get_bucket(os.environ.get('CLOUD_STORAGE_BUCKET'))
@@ -18,6 +21,8 @@ def ML(picname,filename):
     source_uri = 'gs://{}/{}'.format(os.environ.get('CLOUD_STORAGE_BUCKET'), filename)
     response = vision_client.annotate_image({'image': {'source': {'image_uri': source_uri}},})
     labels = response.label_annotations
-    faces = response.face_annotations
-    web_entities = response.web_detection.web_entities
-    print(labels['score'])
+    #faces = response.face_annotations
+    #web_entities = response.web_detection.web_entities
+    if labels[0] == prevlabel:
+        return labels[1].description
+    return labels[0].description
