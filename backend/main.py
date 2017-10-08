@@ -94,6 +94,15 @@ def create_user():
         return redirect(url_for('index'))
     return render_template('create_user.html', form=form)
 
+@app.route('/select')
+def select():
+    pass
+
+
+@app.route('/next/<direction>')
+def next(direction):
+
+
 
 @app.route('/about')
 def about():
