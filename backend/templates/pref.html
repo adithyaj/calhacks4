@@ -23,8 +23,8 @@
     } 
 
     img {
-      height : 407px;
-      width : 407px;
+      height : 420px;
+      width : 280px;
     }
 
     h2 { 
@@ -33,19 +33,13 @@
      left: 0; 
      width: 100%; 
      color : #57BC90;
-     text-align: center;
-    }
-
-    .well {
-      text-align: center;
-    }
+  }
 
 .img-shadow-1
     {
     -webkit-box-shadow: 0 28px 16px -26px black;
     box-shadow: 0 28px 16px -26px black;
     }
-
 
     .img-shadow-1:hover
     {
@@ -113,6 +107,11 @@
     case RIGHT:
         var elem = document.getElementById("nextPage");
         elem.style = "opacity: 0.5;";
+        setTimeout(function () {
+        if (newState == -1) {
+            alert('VIDEO HAS STOPPED');
+        }
+    }, 5000);
         //wait(300);  
         window.location.href="index.html";
         break;
@@ -155,9 +154,10 @@
   </div>
 </nav>
 
-<div style = "margin-top: 20px; height: 150px; background-color: #FFFFFF; margin-bottom: 0px;" class="jumbotron text">
+<div style = "margin-top: 20px; height: 175px; background-color: #FFFFFF; margin-bottom: 0px;" class="jumbotron text">
   <div class="container text-center">
     <h1 style = "color: #015249; font-size: 2em; margin-top: 30px;" >How would you like to proceed?</h1> 
+    <span style = "color: #57BC90; font-size: 1.5em" class="glyphicon glyphicon glyphicon-option-horizontal ">
     </span>
   </div>
 </div>
@@ -165,26 +165,25 @@
 
 
 
-<div class="well">
+<div class="well text-center">
   <div class="row">
   
-    <div class="col-sm-2"></div>
-    <div class="col-sm-4 img-shadow-1 text-center" > 
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3 img-shadow-1" > 
       <a id = "nextPage" href = "index.html" >
-        <img src = "white.jpg"/> 
-        <h2>Start with my 
-          <br/> preferences!</h2>
+        <img src = "../static/img/white.jpg"/> 
+        <h2>Start with your preferences!</h2>
       </a> 
     </div>
 
-    <div class="col-sm-4 img-shadow-1 text-center"> 
+    <div class="col-sm-3 img-shadow-1"> 
       <a id = "nextPage" href = "index.html" >
-        <img src="white.jpg" /> 
+        <img src="../static/img/white.jpg" /> 
         <h2>Jump right in!</h2>
       </a>
     </div>
 
-    <div class="col-sm-2"></div>
+    <div class="col-sm-3"></div>
   </div>
 </div>
 
