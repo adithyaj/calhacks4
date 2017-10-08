@@ -23,6 +23,7 @@ def ML(filename,prevlabel=None):
     labels = response.label_annotations
     #faces = response.face_annotations
     #web_entities = response.web_detection.web_entities
+    
     if labels[0] == prevlabel:
         return labels[1].description
     return labels[0].description

@@ -2,7 +2,7 @@ import json
 import numpy as np
 import webbrowser
 
-def imageURL(fileName="0-City.json", num=1):
+def imageURL(fileName, num=1):
     urlList = []
     with open(fileName) as jsonData:
         d = json.load(jsonData);
@@ -13,6 +13,6 @@ def imageURL(fileName="0-City.json", num=1):
         imgSelect = np.random.choice(np.arange(len(imgList)), size=numImg, replace=False)
         for i in imgSelect:
             urlList.append(imgList[i]["contentUrl"])
-            webbrowser.open(imgList[i]["contentUrl"],new=2)
+            #webbrowser.open(imgList[i]["contentUrl"],new=2)
 
     return urlList
