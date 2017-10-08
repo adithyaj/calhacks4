@@ -5,3 +5,6 @@ planet-080aa45f9931.json
 *.keys
 env/
 __pycache__/
+data/imgsrc/*
+*.pyc
+
