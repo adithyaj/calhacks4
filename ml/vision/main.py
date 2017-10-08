@@ -1,5 +1,7 @@
 import base64
 import os
+import json
+from google.protobuf.json_format import MessageToJson
 
 from flask import Flask, redirect, render_template, request
 from google.cloud import datastore
@@ -39,6 +41,7 @@ def upload_photo():
 
     # Make the blob publicly viewable.
     blob.make_public()
+    print(blob.name)
     image_public_url = blob.public_url
     
     # Create a Cloud Vision client.
@@ -49,9 +52,12 @@ def upload_photo():
     response = vision_client.annotate_image({
         'image': {'source': {'image_uri': source_uri}},
     })
+    global labels
     labels = response.label_annotations
     faces = response.face_annotations
     web_entities = response.web_detection.web_entities
+    print(labels[0])
+
 
     # Create a Cloud Datastore client
     datastore_client = datastore.Client()

@@ -16,7 +16,7 @@ def bingMe(query,callnum,count=35):
 	start = time.time()
 	k,v = scrt.getMSFTKey()
 
-	args = urllib.parse.urlencode({'q': query.replace(' ','+'), k: v, 'mkt': 'en-us','count':count,'size':'large'})
+	args = urllib.parse.urlencode({'q': query.replace(' ','+'), k: v, 'mkt': 'en-us','count':count,'size':'large','contentSize':'2 MB'})
 
 	#backup
 	#submission = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search?q={0}&{1}={2}&mkt=en-us'.format(query,k,v)
@@ -35,7 +35,7 @@ def bingMe(query,callnum,count=35):
 	fin.write(response)
 	end = time.time()
 	fin.close()
-	print('Completed in {0}s.'.format(end-start))
+	print('Completed in {0} s.'.format(end-start))
 
 
 
