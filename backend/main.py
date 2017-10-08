@@ -2,8 +2,9 @@
 from flask import Flask, request, g, render_template, session, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
 from forms import LoginForm
-from utils import load_keys
+from utils import load_keys, rand_int
 import os
+import json
 import sqlite3
 
 keys = load_keys()
@@ -78,6 +79,9 @@ def index():
 def home():
     if(session.get('logged_in', False)):
         kv = {"user" : session['username'], "name" : session['password']}
+        session['history'] = []
+        session['relevance'] = {}
+        session['count'] = 0
         return render_template('home.html', **kv)
     return redirect(url_for('index'))
 
@@ -96,12 +100,24 @@ def create_user():
 
 @app.route('/select')
 def select():
-    pass
+    return render_template('select.html')
 
 
-@app.route('/next/<direction>')
+@app.route('/next/<direction>', methods=['GET'])
 def next(direction):
+    d = {}
+    if(session['count'] == 10):
+        d['first'] = -1
+        return json.dumps(d)
+    print(direction)
+    d['first'] = ("http://www.sparikh.me/photography/Albums/Alaska/original/ak00011.jpg")
+    d['second'] = ("../static/img/x%s.jpg" % rand_int(1, 13))
+    session['count'] += 1
+    return json.dumps(d)
 
+@app.route('/results')
+def results():
+    return render_template('results.html')
 
 
 @app.route('/about')

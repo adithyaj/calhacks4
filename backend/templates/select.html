@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet'>
+  <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
 
   <style>
 
@@ -65,13 +66,26 @@
     -ms-transition:all .6s ease-in-out;
     -o-transition:all .6s ease-in-out;
     }
-
-
-  
-
+      
   </style>
 
   <script>  
+      
+    function sendAJAX(x) {
+        $.ajax({
+            url: '/next/' + x,
+            type: 'GET',
+            success: function(response) {
+                response = $.parseJSON(response);
+                if(response['first']==-1) {
+                    window.location.href = "/results";
+                    return;
+                }
+                $('#first').attr("src", response['first']);
+                $('#second').attr("src", response['second']);
+            }
+        });
+    } 
   
     function print_arrow_key(keyCodeNumber) {
     // console.log(keyCodeNumber);
@@ -84,19 +98,19 @@
     switch (keyCodeNumber) {
     case LEFT:
         var elem = document.getElementById("nextPage");
-        window.location.href = "home.html";
+        sendAJAX('0');
         break;
     case RIGHT:
-        var elem = document.getElementById("nextPage");  
-        window.location.href="home.html";
+        var elem = document.getElementById("nextPage"); 
+        sendAJAX('1');
         break;
     default:
-        key_arrow_or_other.innerHTML = 'Other character (not an arrow key)';
+        //key_arrow_or_other.innerHTML = 'Other character (not an arrow key)';
         break;
     }
 
   }
-
+        
   function checkKeycode(event) {
       // handling Internet Explorer stupidity with window.event
       // @see http://stackoverflow.com/a/3985882/517705
@@ -112,7 +126,7 @@
 
   </script>
 </head>
-<body>
+<body onload="javascript:sendAJAX('0')">
 
 <nav style = "background-color: #77C9D4;"class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
@@ -130,26 +144,20 @@
 
 <div style = "margin-top: 20px; height: 150px; background-color: #FFFFFF; margin-bottom: 0px;" class="jumbotron text">
   <div class="container text-center">
-    <h1 style = "color: #015249; font-size: 2em; margin-top: 30px;" >Where would you like to go?</h1> 
+    <h1 style = "color: #015249; font-size: 2em; margin-top: 30px;" >Which do you like?</h1> 
     </span>
   </div>
 </div>
   
-
-
-
 <div class="well text-center">
   <div class="row">
   
     <div class="col-sm-2"></div>
-    <div class="col-sm-4 img-shadow-1"><img src="../static/test/nature.jpg"  /></div>
-    <div class="col-sm-4 img-shadow-1"><img src="../static/test/city.jpg" /></div>
+    <div class="col-sm-4 img-shadow-1"><img id='first' onclick="javascript:sendAJAX('0')" src="../static/test/nature.jpg"  /></div>
+    <div class="col-sm-4 img-shadow-1"><img id='second' onclick="javascript:sendAJAX('1')" src="../static/test/city.jpg" /></div>
     <div class="col-sm-2"></div>
   </div>
 </div>
-
-
-
 
 </body>
 </html>
