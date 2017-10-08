@@ -61,30 +61,11 @@ def build_results(filename):
     with open(filename) as f:
         content = f.readlines()
     for each in content:
-        print(each)
-        temp = each.split('-')
-        p = load_place(temp[0])
-        t = load_tag(temp[1])
+        p = load_place(each)
         db.execute('INSERT INTO results(place, latitude, longitude) VALUES (?, ?, ?)', (p[0], p[1], p[2]))
-        db.commit()
         cur_row = db.execute('SELECT LAST_INSERT_ROWID()').fetchone()[0]
         print("##### %s" % cur_row)
-        tag_ids = []
-        for x in t:
-            x=str(x)
-            print(x)
-            try:
-                db.execute('INSERT INTO tags(tag) VALUES (?)', (str(x),))
-                cur = db.execute('SELECT id FROM tags WHERE tag=?', (str(x), ))
-                temp = cur.fetchone()[0]
-                tag_ids.append(temp)
-            except (sqlite3.IntegrityError, sqlite3.InterfaceError):
-                d['fail'] += 1
-                d['description'] += "%s " % x
-                print("exists")
-        for relation in tag_ids:
-            db.execute('INSERT INTO result_tag(r_id, t_id) VALUES (?, ?)', (cur_row, relation))
-        db.commit()
+    db.commit()
     return json.dumps(d)
 
 def load_place(place):
@@ -96,13 +77,6 @@ def load_place(place):
     else:
         lat, lon = location.latitude, location.longitude
         return (x, lat, lon)
-
-def load_tag(tag):
-    if(tag[-1]=='\n'):
-        tag=tag[1:-2]
-    else:
-        tag=tag[1:-1]
-    return tag.split(',')
 
 def check_user(username, password):
     db = get_db()
@@ -167,7 +141,7 @@ def next(direction):
 
 @app.route('/load/<item>')
 def load(item):
-    return build_results('../place_temp.txt')
+    return build_results('../places.txt')
 
 @app.route('/results')
 def results():

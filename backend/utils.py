@@ -46,6 +46,24 @@ class LocationLoader():
             for relation in tag_ids:
                 db.execute('INSERT INTO result_tag(r_id, t_id) VALUES (?, ?)', (cur_row, relation))
 
+        t = load_tag(temp[1])
+        tag_ids = []
+        for x in t:
+            x=str(x)
+            print(x)
+            try:
+                db.execute('INSERT INTO tags(tag) VALUES (?)', (str(x),))
+                cur = db.execute('SELECT id FROM tags WHERE tag=?', (str(x), ))
+                temp = cur.fetchone()[0]
+                tag_ids.append(temp)
+            except (sqlite3.IntegrityError, sqlite3.InterfaceError):
+                d['fail'] += 1
+                d['description'] += "%s " % x
+                print("exists")
+        for relation in tag_ids:
+            db.execute('INSERT INTO result_tag(r_id, t_id) VALUES (?, ?)', (cur_row, relation))
+        db.commit()
+
 
     def load_place(place):
         g = self.geolocator
