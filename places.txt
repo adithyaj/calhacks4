@@ -1,16 +1,16 @@
-San Francisco, California, USA
-New York, New York, USA
-Los Angeles, California, USA
-Seattle, Washington, USA
-Chicago, Illinois, USA
-Paris, , France
-London, , United Kingdom
-Barcelona, , Spain
-Santorini, , Greece
-Singapore, , Singapore
-Cape Town, , South Africa
-Yosemite National Park, California, USA
-Zion National Park, Utah, USA
+San Francisco, California, USA-[metropolitan,city,skyline,buildings,skyscraper]
+New York, New York, USA-[metropolitan,city,skyline,buildings,skyscraper,money]
+Los Angeles, California, USA-[metropolitan,city,skyline,buildings,skyscraper,entertainment]
+Seattle, Washington, USA-[metropolitan,city,skyline,buildings,skyscraper,entertainment]
+Chicago, Illinois, USA-[metropolitan,city,skyline,buildings,skyscraper,lake]
+Paris, , France-[metropolitan,city,tower,old,french]
+London, , United Kingdom-[metropolitan,city,tower,old,english]
+Barcelona, , Spain-[metropolitan,city,tower,old,art]
+Santorini, , Greece-[metropolitan,city,tower,old,art,history]
+Singapore, , Singapore-[metropolitan,city,tower,new,art,island]
+Cape Town, , South Africa-[developed,africa,city,old,art,museum]
+Yosemite National Park, California, USA-[nature,outdoors,park,trees,mountains,granite,water,waterfall,snow]
+Zion National Park, Utah, USA-[nature,outdoors,park,waterfall,hike,bush,plants]
 Rio de Janeiro, , Brazil
 Angra dos Reis, , Brazil
 Belfast, , Ireland
