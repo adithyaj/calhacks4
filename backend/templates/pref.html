@@ -25,18 +25,31 @@
     img {
       height : 407px;
       width : 407px;
-      border:13px solid #FFFFFF;
     }
 
-    .img-shadow-1
+    h2 { 
+     position: absolute; 
+     top: 150px; 
+     left: 0; 
+     width: 100%; 
+     color : #57BC90;
+     text-align: center;
+    }
+
+    .well {
+      text-align: center;
+    }
+
+.img-shadow-1
     {
     -webkit-box-shadow: 0 28px 16px -26px black;
     box-shadow: 0 28px 16px -26px black;
     }
 
+
     .img-shadow-1:hover
     {
-    transform:scale(1.1 );
+    transform:scale(1.1);
     -webkit-transform:scale(1.05);
     -moz-transform:scale(1.1);
     -ms-transform:scale(1.1);
@@ -65,10 +78,66 @@
     -o-transition:all .6s ease-in-out;
     }
 
-
   
 
   </style>
+
+  <script>  
+    //document.onkeydown = checkKeycode(event);
+    // function checkKey(e) {
+    //   if (e.keyCode == '37') {
+    //    // left arrow
+    //    var elem = document.getElementById("nextPage");
+    //    elem.href = "index.html";
+    //   }
+    //   else if (e.keyCode == '39') {
+    //      //right arrow
+    //     var elem = document.getElementById("nextPage");
+    //     elem.href = "index.html";
+    //   }
+    // }
+
+    function print_arrow_key(keyCodeNumber) {
+    // console.log(keyCodeNumber);
+    var key_arrow_or_other = document.getElementById('key_arrow_or_other'),
+        LEFT = 37,
+        UP = 38,
+        RIGHT = 39,
+        DOWN = 40;
+
+    switch (keyCodeNumber) {
+    case LEFT:
+        var elem = document.getElementById("nextPage");
+        window.location.href = "index.html";
+        break;
+    case RIGHT:
+        var elem = document.getElementById("nextPage");
+        elem.style = "opacity: 0.5;";
+        //wait(300);  
+        window.location.href="index.html";
+        break;
+    default:
+        key_arrow_or_other.innerHTML = 'Other character (not an arrow key)';
+        break;
+    }
+
+  }
+
+  function checkKeycode(event) {
+      // handling Internet Explorer stupidity with window.event
+      // @see http://stackoverflow.com/a/3985882/517705
+      var keyDownEvent = event || window.event,
+      keycode = (keyDownEvent.which)? keyDownEvent.which: keyDownEvent.keycode;
+
+      print_arrow_key(keycode);
+
+      return false;
+    }
+    document.onkeydown = checkKeycode;
+
+
+  </script>
+
 </head>
 <body>
 
@@ -88,7 +157,7 @@
 
 <div style = "margin-top: 20px; height: 150px; background-color: #FFFFFF; margin-bottom: 0px;" class="jumbotron text">
   <div class="container text-center">
-    <h1 style = "color: #015249; font-size: 2em; margin-top: 30px;" >Where would you like to go?</h1> 
+    <h1 style = "color: #015249; font-size: 2em; margin-top: 30px;" >How would you like to proceed?</h1> 
     </span>
   </div>
 </div>
@@ -96,12 +165,25 @@
 
 
 
-<div class="well text-center">
+<div class="well">
   <div class="row">
   
     <div class="col-sm-2"></div>
-    <div class="col-sm-4 img-shadow-1"><img src="nature.jpg"  /></div>
-    <div class="col-sm-4 img-shadow-1"><img src="city.jpg" /></div>
+    <div class="col-sm-4 img-shadow-1 text-center" > 
+      <a id = "nextPage" href = "index.html" >
+        <img src = "white.jpg"/> 
+        <h2>Start with my 
+          <br/> preferences!</h2>
+      </a> 
+    </div>
+
+    <div class="col-sm-4 img-shadow-1 text-center"> 
+      <a id = "nextPage" href = "index.html" >
+        <img src="white.jpg" /> 
+        <h2>Jump right in!</h2>
+      </a>
+    </div>
+
     <div class="col-sm-2"></div>
   </div>
 </div>

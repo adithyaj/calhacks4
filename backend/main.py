@@ -52,8 +52,8 @@ def initdb_command():
 def check_user(username, password):
     db = get_db()
     print(username, password)
-    cur = db.execute('SELECT * FROM users')
-    temp = cur.fetchall()
+    cur = db.execute('SELECT hashword FROM users')
+    temp = cur.fetchone()[0]
     print("temp password :%s " % temp)
     if(not temp or temp!=password):
         return False
@@ -88,6 +88,7 @@ def create_user():
         session['password'] = form.password.data
         db = get_db()
         db.execute('INSERT INTO users (username, hashword) values (?, ?)', (session['username'], session['password']))
+        db.commit()
         flash('User created')
         return redirect(url_for('login'))
     return render_template('create_user.html', form=form)
