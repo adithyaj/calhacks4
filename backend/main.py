@@ -8,10 +8,12 @@ import sqlite3
 
 keys = load_keys()
 app = Flask(__name__) # create the application instance
-app.config['SECRET_KEY'] = keys['wtf_secret_key']
+app.config['SECRET_KEY'] = "bobjeff" #keys['wtf_secret_key']
+print(app.config['SECRET_KEY'])
 app.config['DATABASE'] = os.path.join(app.root_path, 'planet.db')
 
 bootstrap = Bootstrap(app)
+#csrf = CsrfProtect(app)
 
 ##Database Stuff
 def connect_db():
@@ -61,11 +63,11 @@ def check_user(username, password):
 
 ##pages
 
-@app.route('/home')
-def home():
+@app.route('/pref')
+def pref():
     if(session.get('logged_in', False)):
         kv = {"user" : session['username'], "name" : session['password']}
-        return render_template('index.html', **kv)
+        return render_template('pref.html', **kv)
     return redirect(url_for('login'))
 #
 #@app.route('/login', methods=['GET', 'POST'])
@@ -95,20 +97,26 @@ def create_user():
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
+    print("HELLO WORLD")
     form = LoginForm()
-    if form.validate_on_submit():
+    print(request.form)
+    print(form.username(), form.password())
+    print(request.method, form.validate(), form.validate_on_submit())
+    if request.method=="POST":
+        print("BYe")
         session['username'] = form.username.data
         session['password'] = form.password.data
         if check_user(session['username'], session['password']):
             session['logged_in'] = True
-            return redirect(url_for('home'))
-        flash('Wrong Username or Password')
+            print('Success')
+            return redirect(url_for('pref'))
+        print('Wrong Username or Password')
     return render_template('login.html', form=form)
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return '<h1>FAIL<h1>'
 
 
 if __name__ == '__main__':
