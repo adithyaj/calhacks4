@@ -54,10 +54,8 @@ def initdb_command():
 
 def check_user(username, password):
     db = get_db()
-    print(username, password)
     cur = db.execute('SELECT hashword FROM users')
     temp = cur.fetchone()[0]
-    print("temp password :%s " % temp)
     if(not temp or temp!=password):
         return False
     return True
