@@ -2,16 +2,19 @@
 from flask import Flask, request, g, render_template, session, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
 from forms import LoginForm
-from utils import load_keys, rand_int
+from utils import load_keys, rand_int, hard_limit, to_str
+from geopy.geocoders import Nominatim
 import os
 import json
 import sqlite3
 
 #keys = load_keys()
 app = Flask(__name__) # create the application instance
-app.config['SECRET_KEY'] = "bobjeff" #keys['wtf_secret_key']
+app.config['SECRET_KEY'] = "calhacks" #keys['wtf_secret_key']
 print(app.config['SECRET_KEY'])
 app.config['DATABASE'] = os.path.join(app.root_path, 'planet.db')
+
+geo = Nominatim()
 
 bootstrap = Bootstrap(app)
 #csrf = CsrfProtect(app)
@@ -51,6 +54,55 @@ def initdb_command():
     print('Initialized the database.')
 
 ##Database operations
+def build_results(filename):
+    d = {'fail':0, 'description':""}
+    db = get_db()
+    cursor = db.cursor()
+    with open(filename) as f:
+        content = f.readlines()
+    for each in content:
+        print(each)
+        temp = each.split('-')
+        p = load_place(temp[0])
+        t = load_tag(temp[1])
+        db.execute('INSERT INTO results(place, latitude, longitude) VALUES (?, ?, ?)', (p[0], p[1], p[2]))
+        db.commit()
+        cur_row = db.execute('SELECT LAST_INSERT_ROWID()').fetchone()[0]
+        print("##### %s" % cur_row)
+        tag_ids = []
+        for x in t:
+            x=str(x)
+            print(x)
+            try:
+                db.execute('INSERT INTO tags(tag) VALUES (?)', (str(x),))
+                cur = db.execute('SELECT id FROM tags WHERE tag=?', (str(x), ))
+                temp = cur.fetchone()[0]
+                tag_ids.append(temp)
+            except (sqlite3.IntegrityError, sqlite3.InterfaceError):
+                d['fail'] += 1
+                d['description'] += "%s " % x
+                print("exists")
+        for relation in tag_ids:
+            db.execute('INSERT INTO result_tag(r_id, t_id) VALUES (?, ?)', (cur_row, relation))
+        db.commit()
+    return json.dumps(d)
+
+def load_place(place):
+    s = place.split(', ')
+    x = to_str(s[0], s[1], s[2])
+    location = geo.geocode(x)
+    if(not location):
+        lat, lon = 0.0, 0.0
+    else:
+        lat, lon = location.latitude, location.longitude
+        return (x, lat, lon)
+
+def load_tag(tag):
+    if(tag[-1]=='\n'):
+        tag=tag[1:-2]
+    else:
+        tag=tag[1:-1]
+    return tag.split(',')
 
 def check_user(username, password):
     db = get_db()
@@ -104,7 +156,7 @@ def select():
 @app.route('/next/<direction>', methods=['GET'])
 def next(direction):
     d = {}
-    if(session['count'] == 10):
+    if(session['count'] == hard_limit):
         d['first'] = -1
         return json.dumps(d)
     print(direction)
@@ -112,6 +164,10 @@ def next(direction):
     d['second'] = ("../static/img/x%s.jpg" % rand_int(1, 13))
     session['count'] += 1
     return json.dumps(d)
+
+@app.route('/load/<item>')
+def load(item):
+    return build_results('../place_temp.txt')
 
 @app.route('/results')
 def results():
