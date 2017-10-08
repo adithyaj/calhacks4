@@ -3,5 +3,5 @@ scrt.py
 .DS_Store?
 planet-080aa45f9931.json
 *.keys
-env/*
+env/
 __pycache__/
