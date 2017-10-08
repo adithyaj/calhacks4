@@ -90,11 +90,11 @@
     switch (keyCodeNumber) {
     case LEFT:
         var elem = document.getElementById("nextPage");
-        window.location.href = "index.html";
+        window.location.href = "home.html";
         break;
     case RIGHT:
         var elem = document.getElementById("nextPage");        
-        window.location.href="index.html";
+        window.location.href="home.html";
         break;
     default:
         key_arrow_or_other.innerHTML = 'Other character (not an arrow key)';
@@ -137,7 +137,7 @@
 
 <div style = "margin-top: 20px; height: 150px; background-color: #FFFFFF; margin-bottom: 0px;" class="jumbotron text">
   <div class="container text-center">
-    <h1 style = "color: #015249; font-size: 2em; margin-top: 30px;" >How would you like to proceed?</h1> 
+    <h1 style = "color: #015249; font-size: 2em; margin-top: 30px;" >How would you like to proceed {{ user }}?</h1> 
       </div>
 </div>
   
@@ -149,14 +149,14 @@
   
     <div class="col-sm-2"></div>
     <div class="col-sm-4 img-shadow-1" > 
-      <a id = "nextPage" href = "index.html" >
+      <a id = "nextPage" href = "home.html" >
         <img src = "../static/img/white.jpg"/> 
         <h2>Start with your </br> preferences!</h2>
       </a> 
     </div>
 
     <div class="col-sm-4 img-shadow-1"> 
-      <a id = "nextPage" href = "index.html" >
+      <a id = "nextPage" href = "home.html" >
         <img src="../static/img/white.jpg" /> 
         <h2>Jump right in!</h2>
       </a>

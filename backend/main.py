@@ -63,24 +63,23 @@ def check_user(username, password):
 
 ##pages
 
-@app.route('/pref')
-def pref():
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    form = LoginForm()
+    if request.method=="POST":
+        session['username'] = form.username.data
+        session['password'] = form.password.data
+        if check_user(session['username'], session['password']):
+            session['logged_in'] = True
+            return redirect(url_for('home'))
+    return render_template('index.html', form=form)
+
+@app.route('/home')
+def home():
     if(session.get('logged_in', False)):
         kv = {"user" : session['username'], "name" : session['password']}
-        return render_template('pref.html', **kv)
-    return redirect(url_for('login'))
-#
-#@app.route('/login', methods=['GET', 'POST'])
-#def login():
-#    form = LoginForm()
-#    if form.validate_on_submit():
-#        session['username'] = form.username.data
-#        session['password'] = form.password.data
-#    if check_user(session['username'], session['password']):
-#        session['logged_in'] = True
-#        return redirect(url_for('home'))
-#
-#    return render_template('login.html', form=form, username=session.get('username'))
+        return render_template('home.html', **kv)
+    return redirect(url_for('index'))
 
 @app.route('/create_user',  methods=['GET', 'POST'])
 def create_user():
@@ -92,26 +91,8 @@ def create_user():
         db.execute('INSERT INTO users (username, hashword) values (?, ?)', (session['username'], session['password']))
         db.commit()
         flash('User created')
-        return redirect(url_for('login'))
+        return redirect(url_for('index'))
     return render_template('create_user.html', form=form)
-
-@app.route('/', methods=['GET', 'POST'])
-def login():
-    print("HELLO WORLD")
-    form = LoginForm()
-    print(request.form)
-    print(form.username(), form.password())
-    print(request.method, form.validate(), form.validate_on_submit())
-    if request.method=="POST":
-        print("BYe")
-        session['username'] = form.username.data
-        session['password'] = form.password.data
-        if check_user(session['username'], session['password']):
-            session['logged_in'] = True
-            print('Success')
-            return redirect(url_for('pref'))
-        print('Wrong Username or Password')
-    return render_template('login.html', form=form)
 
 
 @app.route('/about')

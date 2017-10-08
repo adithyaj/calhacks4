@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Our Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet'>
+
+  <style>
+
+    body {
+      font-family: 'Asap';
+    }
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #FFFFFF;
+    }
+
+    .nav.navbar-nav.navbar-right li a {
+      color: #FF3B3F;
+    } 
+
+    img {
+      height : 407px;
+      width : 407px;
+      border:13px solid #FFFFFF;
+    }
+
+    .img-shadow-1
+    {
+    -webkit-box-shadow: 0 28px 16px -26px black;
+    box-shadow: 0 28px 16px -26px black;
+    }
+
+    .img-shadow-1:hover
+    {
+    transform:scale(1.1 );
+    -webkit-transform:scale(1.05);
+    -moz-transform:scale(1.1);
+    -ms-transform:scale(1.1);
+    -o-transform:scale(1.1);
+
+    -webkit-box-shadow: 0 58px 36px -56px black;
+    -moz-box-shadow: 0 58px 36px -56px black;
+    box-shadow: 0 58px 36px -56px black;
+    }
+
+      
+    .img-shadow-1
+    {
+    transition:all .6s ease-in-out;
+    -webkit-transition:all .6s ease-in-out;
+    -moz-transition:all .6s ease-in-out;
+    -ms-transition:all .6s ease-in-out;
+    -o-transition:all .6s ease-in-out;
+    }
+
+    .img-shadow-1:hover
+    {
+    transition:all .6s ease-in-out;
+    -webkit-transition:all .6s ease-in-out;
+    -moz-transition:all .6s ease-in-out;
+    -ms-transition:all .6s ease-in-out;
+    -o-transition:all .6s ease-in-out;
+    }
+
+
+  
+
+  </style>
+
+  <script>  
+  
+    function print_arrow_key(keyCodeNumber) {
+    // console.log(keyCodeNumber);
+    var key_arrow_or_other = document.getElementById('key_arrow_or_other'),
+        LEFT = 37,
+        UP = 38,
+        RIGHT = 39,
+        DOWN = 40;
+
+    switch (keyCodeNumber) {
+    case LEFT:
+        var elem = document.getElementById("nextPage");
+        window.location.href = "home.html";
+        break;
+    case RIGHT:
+        var elem = document.getElementById("nextPage");  
+        window.location.href="home.html";
+        break;
+    default:
+        key_arrow_or_other.innerHTML = 'Other character (not an arrow key)';
+        break;
+    }
+
+  }
+
+  function checkKeycode(event) {
+      // handling Internet Explorer stupidity with window.event
+      // @see http://stackoverflow.com/a/3985882/517705
+      var keyDownEvent = event || window.event,
+      keycode = (keyDownEvent.which)? keyDownEvent.which: keyDownEvent.keycode;
+
+      print_arrow_key(keycode);
+
+      return false;
+    }
+    document.onkeydown = checkKeycode;
+
+
+  </script>
+</head>
+<body>
+
+<nav style = "background-color: #77C9D4;"class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class`="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a  style = "color: #FFFFFF; font-family: 'Asap'; font-size: 250%;"; class="navbar-brand" href="#">Plan&#279;t</a>
+    </div>
+
+  </div>
+</nav>
+
+<div style = "margin-top: 20px; height: 150px; background-color: #FFFFFF; margin-bottom: 0px;" class="jumbotron text">
+  <div class="container text-center">
+    <h1 style = "color: #015249; font-size: 2em; margin-top: 30px;" >Where would you like to go?</h1> 
+    </span>
+  </div>
+</div>
+  
+
+
+
+<div class="well text-center">
+  <div class="row">
+  
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4 img-shadow-1"><img src="../static/test/nature.jpg"  /></div>
+    <div class="col-sm-4 img-shadow-1"><img src="../static/test/city.jpg" /></div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>

@@ -6,149 +6,168 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet'>
-
-  <style>
+ 
+<style>
+	
 
     body {
       font-family: 'Asap';
-    }
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-      background-color: #FFFFFF;
+      /*background-color: "#77C9D4";*/
     }
 
-    .nav.navbar-nav.navbar-right li a {
-      color: #FF3B3F;
-    } 
-
-    img {
-      height : 407px;
-      width : 407px;
-      border:13px solid #FFFFFF;
+    .jumbotron.title {
+    	height: 500px;
+    	text-align: center;
+	    background-color: #77C9D4;
+	    margin-bottom: 100px;
     }
 
-    .img-shadow-1
-    {
-    -webkit-box-shadow: 0 28px 16px -26px black;
-    box-shadow: 0 28px 16px -26px black;
-    }
+   
 
-    .img-shadow-1:hover
-    {
-    transform:scale(1.1 );
-    -webkit-transform:scale(1.05);
-    -moz-transform:scale(1.1);
-    -ms-transform:scale(1.1);
-    -o-transform:scale(1.1);
+    @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 
-    -webkit-box-shadow: 0 58px 36px -56px black;
-    -moz-box-shadow: 0 58px 36px -56px black;
-    box-shadow: 0 58px 36px -56px black;
-    }
+	@prim: #53e3a6;
 
-      
-    .img-shadow-1
-    {
-    transition:all .6s ease-in-out;
-    -webkit-transition:all .6s ease-in-out;
-    -moz-transition:all .6s ease-in-out;
-    -ms-transition:all .6s ease-in-out;
-    -o-transition:all .6s ease-in-out;
-    }
+	*{
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		
+		font-weight: 300;
+	}
 
-    .img-shadow-1:hover
-    {
-    transition:all .6s ease-in-out;
-    -webkit-transition:all .6s ease-in-out;
-    -moz-transition:all .6s ease-in-out;
-    -ms-transition:all .6s ease-in-out;
-    -o-transition:all .6s ease-in-out;
-    }
+	body{
+		color: white;
+		font-weight: 300;
+		
+		::-webkit-input-placeholder { /* WebKit browsers */
+			font-family: 'Source Sans Pro', sans-serif;
+				color:    white;
+			font-weight: 300;
+		}
+		
+	}
 
+	.wrapper{
+		margin-top: 100px;
+		background: #57BC90;
+	background: -webkit-linear-gradient(top left, #50a3a2 0%, #57BC90 100%);
+	background: -moz-linear-gradient(top left, #50a3a2 0%, #57BC90 100%);
+	background: -o-linear-gradient(top left, #50a3a2 0%, #57BC90 100%);
+	background: linear-gradient(to bottom right, #50a3a2 0%, #57BC90 100%);
+		
 
-  
+		
+		&.form-success{
+			.container{
+				h2{
+					transform: translateY(85px);
+				}
+			}
+		}
+	}
 
-  </style>
+	.container{
+		max-width: 700px;
+		margin: 0 auto;
+		padding: 150px 0;
+		height: 651px;
+		text-align: center;
+		
+		
+	}
+	h2{
+			font-size: 50px;
+			transition-duration: 1s;
+			transition-timing-function: ease-in-put;
+			font-weight: 200;
+		}
 
-  <script>  
-  
-    function print_arrow_key(keyCodeNumber) {
-    // console.log(keyCodeNumber);
-    var key_arrow_or_other = document.getElementById('key_arrow_or_other'),
-        LEFT = 37,
-        UP = 38,
-        RIGHT = 39,
-        DOWN = 40;
+	form{
+		padding: 20px 0;
+		position: relative;
+		z-index: 2;
+		
+		
+		
+		
+	}
 
-    switch (keyCodeNumber) {
-    case LEFT:
-        var elem = document.getElementById("nextPage");
-        window.location.href = "index.html";
-        break;
-    case RIGHT:
-        var elem = document.getElementById("nextPage");  
-        window.location.href="index.html";
-        break;
-    default:
-        key_arrow_or_other.innerHTML = 'Other character (not an arrow key)';
-        break;
-    }
+	#input{
+			display: block;
+			appearance: none;
+			outline: 0;
+			border: 1px solid fade(white, 40%);
+			background-color: fade(white, 20%);
+			width: 250px;
+			
+			border-radius: 3px;
+			padding: 10px 15px;
+			margin: 0 auto 10px auto;
+			display: block;
+			text-align: center;
+			font-size: 18px;
+			
+			color: black;
+			
+			transition-duration: 0.25s;
+			font-weight: 300;
+			
+			&:hover{
+				background-color: fade(white, 40%);
+			}
+			
+			&:focus{
+				background-color: white;
+				width: 300px;
+				
+				color: @prim;
+			}
+		}
 
-  }
+	button{
+			appearance: none;
+			outline: 0;
+			background-color: white;
+			border: 0;
+			padding: 10px 15px;
+			color: @prim;
+			border-radius: 3px;
+			width: 250px;
+			cursor: pointer;
+			font-size: 18px;
+			transition-duration: 0.25s;
+			
+			&:hover{
+				background-color: rgb(245, 247, 249);
+			}
+		}
 
-  function checkKeycode(event) {
-      // handling Internet Explorer stupidity with window.event
-      // @see http://stackoverflow.com/a/3985882/517705
-      var keyDownEvent = event || window.event,
-      keycode = (keyDownEvent.which)? keyDownEvent.which: keyDownEvent.keycode;
+</style>
 
-      print_arrow_key(keycode);
-
-      return false;
-    }
-    document.onkeydown = checkKeycode;
-
-
-  </script>
 </head>
-<body>
+<body >
 
-<nav style = "background-color: #77C9D4;"class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-        <span class`="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a  style = "color: #FFFFFF; font-family: 'Asap'; font-size: 250%;"; class="navbar-brand" href="#">Plan&#279;t</a>
-    </div>
+<div class="jumbotron title">
+	<div class = "container text-center" >
+		<h1 style = "color: #FFFFFF; margin-top: 10px; font-size: 150px;"> Plan&#279;t </h1>
+	</div>
+</div> 
 
-  </div>
-</nav>
 
-<div style = "margin-top: 20px; height: 150px; background-color: #FFFFFF; margin-bottom: 0px;" class="jumbotron text">
-  <div class="container text-center">
-    <h1 style = "color: #015249; font-size: 2em; margin-top: 30px;" >Where would you like to go?</h1> 
-    </span>
-  </div>
+<div class="wrapper">
+	<div class="container">
+		<h2>Welcome</h2>
+		<form class="form" action="{{ url_for('index') }}" method="Post">
+			<div placeholder="Username" id = "input"> {{ form.username.label }}: {{ form.username() }}</div>
+			<div placeholder="Password" id = "input">  {{ form.password.label }}: {{ form.password() }}</div>
+			
+ 			<button style = "color: black;" type="submit" id="login-button" >Login</button>
+		</form>
+		<a href= "home.html"><p style = "text-decoration: underline; color: white;"> Continue as Guest </p>  </a>
+	</div>
+	
 </div>
-  
-
-
-
-<div class="well text-center">
-  <div class="row">
-  
-    <div class="col-sm-2"></div>
-    <div class="col-sm-4 img-shadow-1"><img src="../static/test/nature.jpg"  /></div>
-    <div class="col-sm-4 img-shadow-1"><img src="../static/test/city.jpg" /></div>
-    <div class="col-sm-2"></div>
-  </div>
-</div>
-
-
 
 
 </body>
