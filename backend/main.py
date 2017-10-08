@@ -2,13 +2,15 @@
 from flask import Flask, request, g, render_template, session, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
 from forms import LoginForm
-from utils import load_keys, rand_int, hard_limit, to_str
+from utils import load_keys, rand_int, hard_limit, to_str, u_rand
 from geopy.geocoders import Nominatim
 import os
 import json
 import sqlite3
 from ml import ml_main
 
+categories = ["beach", "city", "nature", "tourist"]
+pq = 15
 #keys = load_keys()
 app = Flask(__name__) # create the application instance
 app.config['SECRET_KEY'] = "calhacks" #keys['wtf_secret_key']
@@ -63,7 +65,7 @@ def build_results(filename):
         content = f.readlines()
     for each in content:
         p = load_place(each)
-        db.execute('INSERT INTO results(place, latitude, longitude) VALUES (?, ?, ?)', (p[0], p[1], p[2]))
+        db.execute('INSERT INTO results(place, latitude, longitude, category) VALUES (?, ?, ?, ?)', (p[0], p[1], p[2], p[3]))
         cur_row = db.execute('SELECT LAST_INSERT_ROWID()').fetchone()[0]
         print("##### %s" % cur_row)
     db.commit()
@@ -77,7 +79,7 @@ def load_place(place):
         lat, lon = 0.0, 0.0
     else:
         lat, lon = location.latitude, location.longitude
-        return (x, lat, lon)
+        return (x, lat, lon, s[3])
 
 def check_user(username, password):
     db = get_db()
@@ -105,7 +107,8 @@ def home():
     if(session.get('logged_in', False)):
         kv = {"user" : session['username'], "name" : session['password']}
         session['history'] = []
-        session['relevance'] = {}
+        session['scores'] = {x:0 for x in categories}
+        session['state'] = {"lastLeft":None, "lastRight":None}
         session['count'] = 0
         return render_template('home.html', **kv)
     return redirect(url_for('index'))
@@ -135,20 +138,28 @@ def next(direction):
         d['first'] = -1
         return json.dumps(d)
     print(direction)
-    d['first'] = ("http://www.sparikh.me/photography/Albums/Alaska/original/ak00011.jpg")
+    d['first'] = ("../static/img/x%s.jpg" % rand_int(1, 13))
     d['second'] = ("../static/img/x%s.jpg" % rand_int(1, 13))
     session['count'] += 1
     return json.dumps(d)
 
-@app.route('/next2/<direction>', methods=['GET'])
-def next2(direction):
+@app.route('/picker_start', methods=['GET'])
+def picker_start():
+    cat1, cat2 = u_rand(0, len(categories), 2)
+    cat1 = categories[cat1]
+    cat2 = categories[cat2]
+    x = ("../static/img/%s%s.jpg" % (cat1, rand_int(1, pq)))
+    y = ("../static/img/%s%s.jpg" % (cat2, rand_int(1, pq)))
+    session['state']['lastLeft'] = cat1
+    session['state']['lastRight'] = cat2
+    return render_template('select.html', **{"img1":x, "img2":y})
+
+@app.route('/picker/<direction>', methods=['GET'])
+def picker(direction):
     d={}
     if(session['count'] == hard_limit):
         d['first'] = -1
         return json.dumps(d)
-    blob = ml_main()
-    d['first'] = blob['first'][0]
-    d['second'] = blob['second'][0]
     session['count'] += 1
     session['history'].append(direction)
     return json.dumps(d)

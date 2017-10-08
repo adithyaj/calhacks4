@@ -15,6 +15,9 @@ def load_keys():
 def rand_int(low, high):
     return random.randint(low, high)
 
+def u_rand(low, high, quantity):
+    return tuple(random.sample(range(low, high), quantity))
+
 def to_str(*strings):
     string = ""
     for each in strings:

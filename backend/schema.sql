@@ -9,5 +9,6 @@ create table if not exists results (
     place text not null,
     latitude real default 0.0,
     longitude real default 0.0,
+    category text not null,
     hits integer default 0
 );

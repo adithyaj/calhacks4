@@ -1,58 +1,58 @@
-San Francisco, California, USA
-New York, New York, USA
-Los Angeles, California, USA
-Seattle, Washington, USA
-Chicago, Illinois, USA
-Paris, , France
-London, , United Kingdom
-Barcelona, , Spain
-Santorini, , Greece
-Singapore, , Singapore
-Cape Town, , South Africa
-Yosemite National Park, California, USA
-Zion National Park, Utah, USA
-Rio de Janeiro, , Brazil
-Angra dos Reis, , Brazil
-Belfast, , Ireland
-Heidelberg, , Germany
-New Delhi, , India
-Helsinki, , Finland
-Honolulu, Hawaii, USA
-Jerusalem, , Israel
-La Paz, , Bolivia
-Montevideo, , Uruguay
-Montreal, Quebec, Canada
-Sydney, , Australia
-Okavango Delta, , Botswana
-Oslo, , Norway
-Santo Domingo, , Dominican Republic
-Rome, , Italy
-Puerto Vallarta, , Mexico
-Yellowstone National Park, , USA
-Grand Canyon National Park, , USA
-Arches National Park, Utah, USA
-Rocky Mountain National Park, , USA
-Denali National Park and Preserve, Alaska, USA
-Kenai Fjords National Park, Alaska, USA
-Shanghai, , China
-Beijing, , China
-Tokyo, , Japan
-Osaka, , Japan
-Bangkok, , Thailand
-Mumbai, , India
-Jaipur, , India
-Goa, , India
-Machu Picchu, , Peru
-Lima, , Peru
-Cairo, , Egypt
-Tenerife, , Spain
-Marrakesh, , Morocco
-Big Bend National Park, Texas, USA
-Bryce Canyon National Park, Utah, USA
-Canyonlands National Park, Utah, USA
-Crater Lake, Oregon, USA
-Joshua Tree National Park, California, USA
-Pinnacles National Park, California, USA
-Sequoia National Park, California, USA
-Atlanta, Georgia, USA
-Chennai, , India
+San Francisco, California, USA, city
+New York, New York, USA, city
+Los Angeles, California, USA, city
+Seattle, Washington, USA, city
+Chicago, Illinois, USA, city
+Paris, , France, city
+London, , United Kingdom, city
+Barcelona, , Spain, city
+Santorini, , Greece, beach
+Singapore, , Singapore, city
+Cape Town, , South Africa, city
+Yosemite National Park, California, USA, nature
+Zion National Park, Utah, USA, nature
+Rio de Janeiro, , Brazil, city
+Angra dos Reis, , Brazil, beach
+Belfast, , Ireland, city
+Heidelberg, , Germany, city
+New Delhi, , India, city
+Helsinki, , Finland, city
+Honolulu, Hawaii, USA, beach
+Jerusalem, , Israel, city
+La Paz, , Bolivia, city
+Montevideo, , Uruguay, city
+Montreal, Quebec, Canada, city
+Sydney, , Australia, city
+Okavango Delta, , Botswana, nature
+Oslo, , Norway, city
+Santo Domingo, , Dominican Republic, city
+Rome, , Italy, city
+Puerto Vallarta, , Mexico, beach
+Yellowstone National Park, , USA, nature
+Grand Canyon National Park, , USA, nature
+Arches National Park, Utah, USA, nature
+Rocky Mountain National Park, , USA, nature
+Denali National Park and Preserve, Alaska, USA, nature
+Kenai Fjords National Park, Alaska, USA, nature
+Shanghai, , China, city
+Beijing, , China, city
+Tokyo, , Japan, city
+Osaka, , Japan, city
+Bangkok, , Thailand, city
+Mumbai, , India, city
+Jaipur, , India, tourism
+Goa, , India, beach
+Machu Picchu, , Peru, nature
+Lima, , Peru, city
+Cairo, , Egypt, city
+Tenerife, , Spain, beach
+Marrakesh, , Morocco, city
+Big Bend National Park, Texas, USA, nature
+Bryce Canyon National Park, Utah, USA, nature
+Canyonlands National Park, Utah, USA, nature
+Crater Lake, Oregon, USA, nature
+Joshua Tree National Park, California, USA, nature
+Pinnacles National Park, California, USA, nature
+Sequoia National Park, California, USA, nature
+Atlanta, Georgia, USA, city
+Chennai, , India, city
